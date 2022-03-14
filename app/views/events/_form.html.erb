@@ -1,0 +1,21 @@
+<% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li style="color:red;"><%= error %></li>
+        <% end %>
+      </ul>
+  <% end %>
+<%= form_with(model: @event, local:true) do |form| %>
+    <%= form.label :name,"Event Name", style: "display: block"%>
+    <%= form.text_field :name %>
+  
+   
+    <%= form.label :description,"Event description", style: "display: block" %>
+    <%= form.text_field :description %>
+  
+  
+    <%= form.label :event_date,"Date", style: "display: block" %>
+    <%= form.date_field :event_date%>
+
+    <%= form.submit%>
+<%end%>

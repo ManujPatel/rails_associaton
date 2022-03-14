@@ -1,0 +1,21 @@
+<% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li style="color:red;"><%= error %></li>
+        <% end %>
+      </ul>
+  <% end %>
+<%= form_with(model: @user, local:true) do |form| %>
+    <%= form.label :username,"User Name", style: "display: block"%>
+    <%= form.text_field :username %>
+  
+   
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email %>
+  
+  
+    <%= form.label :password,"Password", style: "display: block" %>
+    <%= form.password_field :password%>
+
+    <%= form.submit%>
+<%end%>

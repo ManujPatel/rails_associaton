@@ -1,0 +1,31 @@
+<h1><%= @user.username%>'s profile </h1>
+<h2>User Details:</h2>
+<table>
+    <tr>
+        <th>Name:</th>
+        <td><%= @user.username %></td>
+    </tr>
+    <tr>
+        <th>Email:</th>
+        <td><%= @user.email %></td>
+    </tr>
+</table>
+<%if @user.events.any?%>
+    <h2>Event Details:</h2>
+    <table border="2px">
+        <tr>
+            <td>Event name</td><td>Event date</td><td>Show</td><td>remove</td>
+        </tr>
+        <% @user.events.each do |e|%>
+            <tr>
+                <td> <%= e.name %> </td>
+                <td> <%= e.event_date %></td>
+                <td><%= button_to "Show",event_path(e),method: :get %></td>
+                <td><%= button_to "Delete",enrollment_path(e.enrollments.find_by(user_id:@user.id)),method: :delete %></td>
+            </tr>
+        <%end%>
+    </table>
+<%end%>    
+<%= button_to "Add new event",new_enrollment_path,method: :get%>   
+<%= button_to "Delete Account",user_path(@user), method: :delete%>
+<%= button_to 'Logout', logout_path, method: :delete %>

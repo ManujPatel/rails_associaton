@@ -1,15 +1,21 @@
 <h1><%= @user.username%>'s profile </h1>
 <h2>User Details:</h2>
-<table>
-    <tr>
-        <th>Name:</th>
-        <td><%= @user.username %></td>
-    </tr>
-    <tr>
-        <th>Email:</th>
-        <td><%= @user.email %></td>
-    </tr>
-</table>
+    <table>
+        <tr>
+            <th>Name:</th>
+            <td><%= @user.username %></td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td><%= @user.email %></td>
+        </tr>
+    </table>
+<h2>Address:</h2>
+    <%if @user.address%>
+        <p>House Number:<%= @user.address.house_number %></p>
+        <p>Street Name:<%= @user.address.street_name %></p>
+        <p>Road:<%= @user.address.road %></p>  
+    <%end%>
 <%if @user.events.any?%>
     <h2>Event Details:</h2>
     <table border="2px">

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set, only: [:show, :edit, :update, :destroy]
   def index
     @users = User.all
+    
   end
 
   def show
@@ -10,6 +11,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_address
+    
   end
 
   def create
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password,address_attributes: [:house_number, :street_name, :road])
     end
 
     def set

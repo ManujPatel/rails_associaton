@@ -13,7 +13,7 @@
     <% if logged_in?%>
         <% @enrollment.user_id = current_user.id %>
         <%= form.label :user_id,"User Id", style: "display: block"%>
-        <%= form.text_field :user_id%>
+        <%= @enrollment.user_id%><br>
     <%end%>
 
     <%= form.submit %>

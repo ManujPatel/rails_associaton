@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_11_101248) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_15_045202) do
+  create_table "addresses", force: :cascade do |t|
+    t.integer "house_number"
+    t.string "street_name"
+    t.string "road"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "enrollments", force: :cascade do |t|
     t.integer "event_id", null: false
     t.integer "user_id", null: false
@@ -36,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_11_101248) do
     t.string "password_digest"
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "enrollments", "events"
   add_foreign_key "enrollments", "users"
 end

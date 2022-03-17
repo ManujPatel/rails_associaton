@@ -17,5 +17,8 @@
     <%= form.label :event_date,"Date", style: "display: block" %>
     <%= form.date_field :event_date%>
 
+    <%= form.label :category_id ,style: "display: block"%><br>
+    <%= form.select :category_id, Category.all.map { |t| [t.c_name, t.id] } %>
+    
     <%= form.submit%>
 <%end%>

@@ -1,20 +1,28 @@
 <h1>Events#index</h1>
-<table> 
-    <tr>Event Details</tr>
-    <tr class="table table-dark">
-    <td>Event Id</td><td>Name</td><td>Description</td><td>Event Date</td><td>Show</td>  
-    <td>Edit</td>
-    </tr>
-    <% @events.each do |s| %>
-      <tr>
-        <td><%=s.id %></td>
-        <td><%=s.name %></td>
-        <td><%=s.description %></td>
-        <td><%=s.event_date %></td>
-        <td><%= button_to 'Show', event_path(s), method: :get%></td>
-        <td><%= button_to 'Edit', edit_event_path(s), method: :get%></td>    
+<%= form_tag @catagory_path, :method => 'get', class: 'A'  do %>
+  <%= text_field_tag :search, params[:search],placeholder: 'Search Category ' %>
+    <span class="A">
+      <%= submit_tag "search"%>
+    </span>
+<% end %>
+<% if params[:search] %>
+  <table> 
+      <tr>Event Details</tr>
+      <tr class="table table-dark">
+      <td>Event Id</td><td>Name</td><td>Description</td><td>Event Date</td><td>Show</td>  
+      <td>Edit</td>
       </tr>
-    <% end %>
-</table>
+      <% @events.each do |s| %>
+        <tr>
+          <td><%=s.id %></td>
+          <td><%=s.name %></td>
+          <td><%=s.description %></td>
+          <td><%=s.event_date %></td>
+          <td><%= button_to 'Show', event_path(s), method: :get%></td>
+          <td><%= button_to 'Edit', edit_event_path(s), method: :get%></td>    
+        </tr>
+      <% end %>
+  </table>
+<%end%>
 <%= button_to "Add New Event", new_event_path, method: :get%>
 <p>Find me in app/views/events/index.html.erb</p>

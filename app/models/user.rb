@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    # frozen_string_literal: true
     has_many :enrollments, dependent: :destroy
     has_many :events, through: :enrollments
     validates :username, :email, presence: true ,uniqueness: true 

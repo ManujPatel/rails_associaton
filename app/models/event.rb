@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+    # frozen_string_literal: true
     has_many :enrollments, dependent: :destroy
     has_many :users, through: :enrollments
     validates :name, presence: true

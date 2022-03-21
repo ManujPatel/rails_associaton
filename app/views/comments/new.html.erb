@@ -1,13 +1,13 @@
-<h1>Comments#new</h1>
-<% if flash[:errors] %>
-      <ul>
-        <% flash[:errors].each do |error| %>
-          <li style="color:red;"><%= error %></li>
-        <% end %>
-      </ul>
-  <% end %>
-<%= form_for [events_path, Comment.new] do |form| %>
-    <% @enrollment.user_id = current_user.id %>
-    <%= form.label :comment,"Content", style: "display: block"%>
-    <%= form.text_field :contents %>
-<%end%>
+<body>
+    <% if flash[:errors] %>
+        <ul>
+            <% flash[:errors].each do |error| %>
+            <li style="color:red;"><%= error %></li>
+            <% end %>
+        </ul>
+    <% end %>
+    <%= form_for [@commentable, @comments] do |f|%>
+        <%= f.text_area :content%>
+        <%= f.submit %>
+    <%end%>
+</body>

@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/create'
+  get 'comments/destroy'
   root 'users#home'
-  resources :events
+  resources :events do
+    resources :comments, module: :events
+  end
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
   get 'login', to: 'sessions#new'

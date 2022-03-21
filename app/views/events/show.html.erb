@@ -18,3 +18,10 @@
     </tr>
 </table>
 
+<p>Comments:</p>
+<ul>
+<% @event.comments.each do |comment|%>
+    <li><%= comment.content%></li>
+<%end%>
+</ul>
+

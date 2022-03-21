@@ -1,0 +1,28 @@
+<h1>Events#show</h1>
+<table>
+    <tr>
+        <th>Event Name:</th>
+        <td><%= @event.name %></td>
+    </tr>
+    <tr>
+        <th>Description:</th>
+        <td><%= @event.description %></td>
+    </tr>
+    <tr>
+        <th>Event Date:</th>
+        <td><%= @event.event_date %></td>
+    </tr>
+    <tr>
+        <th>Event Category:</th>
+        <td><%= @event.category.c_name %></td>
+    </tr>
+</table>
+
+<p>Comments:</p>
+<ul>
+<% @event.comments.each do |comment|%>
+    <li><%= comment.content%></li>
+<%end%>
+</ul>
+<%= link_to "add comment", new_event_comment_path(@event)%>
+

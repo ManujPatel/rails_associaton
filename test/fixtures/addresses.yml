@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  house_number: 1
+  street_name: MyString
+  road: MyString
+  user: one
+
+two:
+  house_number: 1
+  street_name: MyString
+  road: MyString
+  user: two

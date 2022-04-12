@@ -1,20 +1,17 @@
 class CommentsController < ApplicationController
   before_action :set, only: [:index, :new, :create]
   def index
-    
     @comments = @commentable.comments
   end
 
   def new
-    @commentable = Event.find(params[:event_id])
     @comments = @commentable.comments.new
   end
 
   def create
-    @commentable = Event.find(params[:event_id])
     @comment = @commentable.comments.new( params.require(:comment).permit(:content, :user_id))
     if @comment.save
-      flash[:notice] = "Event successfully created"
+      flash[:notice] = "comment successfully created"
       redirect_to event_path(@comment)
     else
       flash[:errors] = @comment.errors.full_messages
